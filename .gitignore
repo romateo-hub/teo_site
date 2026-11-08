@@ -1,0 +1,14 @@
+# Dev artifacts
+index.html.orig.bak
+assets_manifest.json
+assets_pass2.json
+redirect_patch_report.txt
+serve.js
+
+# Build output
+dist/
+
+# OS / tooling
+.DS_Store
+node_modules/
+.vercel/

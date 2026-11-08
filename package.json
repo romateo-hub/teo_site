@@ -1,0 +1,9 @@
+{
+  "name": "teo-site",
+  "private": true,
+  "scripts": {
+    "dev": "node serve.js",
+    "start": "node serve.js",
+    "build": "node build.mjs"
+  }
+}
