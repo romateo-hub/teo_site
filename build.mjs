@@ -5,7 +5,7 @@
  * Whitelist strategy — nothing extra can leak into production by accident:
  *   index.html            main SPA shell
  *   <route>/index.html    pre-rendered route shells (about, pulse, ...)
- *   favicon.svg|ico
+ *   img/                  OpenGraph, favicons, avatars (romateo-avatars)
  *   vercel.json           SPA rewrites for unknown paths
  *   assets/               all static assets (bundle, css, images, fonts, cv, og)
  *
@@ -56,8 +56,7 @@ function copyDir(rel) {
 
 /* ── copy ────────────────────────────────────────────────────────────────── */
 copyFile('index.html');
-copyFile('favicon.svg');
-copyFile('favicon.ico');
+copyDir('img');
 copyFile('vercel.json');
 for (const route of ROUTES) copyFile(path.join(route, 'index.html'));
 copyDir('assets');
@@ -73,7 +72,7 @@ console.log(`dist/ built: ${copied.length} files, ${(total / 1024 / 1024).toFixe
 for (const [d, b] of Object.entries(byFolder)) console.log(`  ${d}: ${b} bytes`);
 
 /* sanity checks the build fails on */
-const mustHave = ['dist/index.html', 'dist/vercel.json', 'dist/favicon.ico', 'dist/assets/index-DWhZCUnu.js', 'dist/assets/index-Dur__Kta.css'];
+const mustHave = ['dist/index.html', 'dist/vercel.json', 'dist/img/favicon.ico', 'dist/img/OpenGraph.png', 'dist/assets/index-DWhZCUnu.js', 'dist/assets/index-Dur__Kta.css'];
 let ok = true;
 for (const f of mustHave) {
   if (!fs.existsSync(path.join(ROOT, f))) { console.error(`  MISSING ${f}`); ok = false; }
